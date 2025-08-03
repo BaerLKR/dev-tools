@@ -65,7 +65,7 @@ JavaScript module for you to host or distribute.
     use sys_esbuild <- do(cli.get_bool(
       "use-system-esbuild",
       False,
-      ["build"],
+      ["build", "app", "start"],
       sys_esbuild,
     ))
 
@@ -164,7 +164,7 @@ returns a suitable Lustre `App`.
     use sys_esbuild <- do(cli.get_bool(
       "use-system-esbuild",
       False,
-      ["build"],
+      ["build", "app", "start", "component"],
       sys_esbuild,
     ))
 

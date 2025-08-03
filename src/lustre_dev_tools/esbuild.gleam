@@ -58,7 +58,6 @@ pub fn bundle(
   minify: Bool,
   sys_esbuild: Bool,
 ) -> Cli(Nil) {
-  use _ <- cli.do(download(get_os(), get_cpu()))
   use _ <- cli.try(project.build())
 
   let root = project.root()
@@ -75,7 +74,9 @@ pub fn bundle(
 
   use <- cli.log("Bundling with esbuild")
   use _ <- cli.try(case sys_esbuild {
-    False -> exec_esbuild(root, options)
+    False -> {
+            download(get_os(), get_cpu())
+            exec_esbuild(root, options)}
     True -> exec_sys_esbuild(root, options)
   })
 
